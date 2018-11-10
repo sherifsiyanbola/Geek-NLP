@@ -7,7 +7,7 @@ def word_feats(words):
     return dict([(word, True) for word in words])
  
 positive_vocab = [ 'awesome', 'outstanding', 'fantastic', 'terrific', 'good', 'nice', 'great', ':)' ]
-negative_vocab = [ 'bad', 'not awesome', 'sucks', 'terrible','useless', 'hate', 'not great'':(' ]
+negative_vocab = [ 'bad', 'not awesome', 'sucks', 'terrible','useless', 'fuck', 'shit', 'hate', 'not great'':(' ]
 neutral_vocab = [ 'movie','the','sound','was','is','actors','did','know','words','not', 'have', 'hello' ]
  
 positive_features = [(word_feats(pos), 'pos') for pos in positive_vocab]
@@ -33,7 +33,20 @@ for word in words:
         pos = pos + 1
     if classResult == 'neu':
         neu = neu + 1
- 
+
+if (pos > neg):
+    print "The input data contains positive feedback"
+elif (pos < neg):
+    print "The input data contains negative data"
+elif (pos == neg):
+    print "The level of the positivity and negativity of the input data is same"
+else:
+    print "The input data is neutral"
+
+
+print "-------------------"
+print "Results Below"
+print "-------------------"
 print('Positive: ' + str(float(pos)/len(words)))
 print('Negative: ' + str(float(neg)/len(words)))
 print('Neutrality: ' + str(float(neu)/len(words)))
